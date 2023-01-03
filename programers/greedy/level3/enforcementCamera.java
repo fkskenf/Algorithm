@@ -1,0 +1,39 @@
+import java.util.*;
+
+class Solution {
+	public int solution(int[][] routes) {
+		int answer = 0;
+
+		Arrays.sort(routes, (a,b)-> Integer.compare(a[1], b[1]));
+		
+		boolean[] visited = new boolean[routes.length]; // 갯수만큼 생성
+
+		for (int i = 0; i < routes.length; i++) { // 범위 전체 반복
+			if (visited[i]) { // 방문한 노드라면 패스
+				continue;
+			}
+			int start = routes[i][0];
+			int end = routes[i][1];
+
+			visited[i] = true; // 방문표시
+			answer++;
+
+			for (int j = 0; j < routes.length; j++) { // 범위 전체 반복
+				if (i == j || visited[j]) { // 자기자신이거나 방문한 노드라면 패스
+					continue; //
+				}
+
+				int start2 = routes[j][0];
+				int end2 = routes[j][1];
+
+				// 겹치지 않는 경우
+				if (end < start2 || end2 < start) {
+					continue;
+				} else {
+					visited[j] = true; // 방문표시
+				}
+			}
+		}
+		return answer;
+	}
+}
