@@ -4,6 +4,10 @@
 
 ## 주의사항 
 1. 전역변수 설정시
-> private static final int HOUR = 60;
+```java
+private static final int HOUR = 60;
+```
 2. 메소드 생성시 
-> private static int calTime() { ... )
+```java
+private static int calTime() { ... )
+```
